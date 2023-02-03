@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Shooting Game</title>
+    <!-- Styles -->
+    <style>
+        *, *::before, *::after{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        *{
+            touch-action: none  ;
+        }
+
+        body{
+            background-color: #000;
+        }
+
+        html{
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .gameOverBx ,.startGameBx{
+            color: rgba(255, 255, 255, 0.6);;
+            position: absolute;
+            width: 60%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            top: 50%;
+            left: 50%;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            border-radius: 0.4rem;
+            padding: 2rem;
+            box-shadow: 7px 7px 35px rgba(255, 255, 255, 0.1);
+        }
+
+        .gameOverBx{
+            display: none;
+        }
+
+        .gameScore{
+            font-size: 5.1rem;
+        }
+
+        .gameOverBx > h2{
+            font-size: 2.3rem;
+            margin: 1rem 0;
+        }
+
+        .restartBtn, .startBtn{
+            text-decoration: none;
+            background: rgb(255, 255, 255, 0.1);
+            border: 0.07rem solid #fff;
+            color: #fff;
+            padding: 1rem;
+            display: inline-block;
+            border-radius: 0.4rem;
+        }
+
+        .container .scoreText{
+            position: absolute;
+            width: 100%;
+            height: 4rem;
+            color: #fff;
+            top: 0rem;
+            padding: 1rem;
+            font-size: 20px;
+            font-weight: bold;
+            user-select: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="scoreText">
+            Score: <span id="scoreEle">0</span>
+        </span>
+        <div class="gameOverBx">
+            <h1>Game Over !!!</h1>
+            <br />
+            
+            <h2>
+                <p class="gameScore">0</p>
+                <p class="pointsText">Points</p>
+            </h2>
+            <a href="#" class="restartBtn">Restart Game</a>
+        </div>
+
+        <div class="muteDiv" style="position: absolute; top: 0; right: 0px; padding: 1rem; margin: 1.6rem; z-index: 99999;">
+
+        <svg style="color: white; width: 20px; height: 20px; position: absolute; top: 0; right: 40px; cursor: pointer;" 
+        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" id="volumeUpBtn">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+          </svg>
+
+          <svg style="color: white; width: 20px; height: 20px; display: none; position: absolute; top: 0; right: 0px; cursor: pointer;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" id="volumeOffBtn">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.531V19.94a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.506-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.395C2.806 8.757 3.63 8.25 4.51 8.25H6.75z" />
+          </svg>
+          
+        </div>
+          
+
+        <div class="startGameBx">
+            <h1>Start a new Game</h1>
+            <br />
+            <a href="#" class="startBtn">Start Game</a>
+        </div>
+    </div>
+
+   
+    <canvas id="myCanvas"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/audio.js"></script>
+    <script src="./js/classes.js"></script>
+    <script src="./game.js"></script>
+</body>
+</html>
