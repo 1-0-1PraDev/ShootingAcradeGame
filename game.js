@@ -348,11 +348,11 @@ volumeOffBtn.addEventListener('click', () => {
 
 
 function shoot({x, y}){
-    if (game.active === true) {
+    if (game.active) {
         // shoot projectiles on click
         const angle = Math.atan2(
-            x - player.y,
-            y - player.x
+            y - player.y,
+            x - player.x
         );
 
         const velocity = {
